@@ -1,0 +1,316 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+ * {
+	 padding: 0;
+	 margin: 0;
+	 font-family: 'Lato';
+}
+.wrapper {
+    display: flex;
+    height: 100vh;
+}
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    height: calc(100% - 40px);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .history-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #555;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .history-list-item  .delete-icon {
+    color:red;
+  }
+  
+  .history-list-item:hover {
+    background-color: #555;
+  }
+  
+ .container {
+	 margin: 0 ;
+	 padding: 20px 40px;
+	 position: relative;
+     flex-grow: 1;
+}
+ .heading {
+    background: url('./images/ip-address-back.png');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 300px;
+    width: 100%;
+	 height: 25vh;
+	 border-radius: 4px;
+	 display: flex;
+	 flex-direction: column;
+	 align-items: center;
+     color: #222;
+     padding-bottom: 50px;
+}
+ .heading .header {
+	 margin: 20px;
+}
+ .search {
+	 width: 450px;
+     z-index: 50;
+	 position: relative;
+     display: flex;
+}
+ .search .input {
+	 width: 100%;
+	 font-size: 18px;
+	 padding: 10px;
+	 outline: none;
+	 border: 2px solid #4e4e4e7a;
+	 border-radius: 5px;
+}
+ .search .input::placeholder {
+	 font-size: 16px;
+	 color: #b8b8b8;
+}
+ .btn {
+    border-radius: 5px;
+	 background-color: #222;
+	 color: #fff;
+	 padding: 15px 20px;
+	 outline: none;
+	 border: 0;
+	 cursor: pointer;
+     width: 50%;
+     margin-left: 10px;
+}
+ .output {
+	 width: 50%;
+	 background-color: #fff;
+	 position: absolute;
+	 top: 260px;
+	 /* z-index: -1; */
+	 left: 50%;
+	 transform: translate(-50%, -50%);
+	 border-radius: 4px;
+}
+ .output .output-card {
+	 display: grid;
+	 grid-template-columns: repeat(5, 1fr);
+	 list-style: none;
+	 padding: 5px;
+	 box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+
+}
+ .output .output-card .item {
+	 padding: 10px 0 0 0;
+	 text-align: center;
+}
+ .output .output-card .item h2 {
+	 font-size: 0.7rem;
+	 color: #969696;
+	 font-weight: 600;
+	 margin-bottom: 8px;
+}
+ .output .country {
+	 width: 40px;
+	 height: 40px;
+	 border-radius: 50%;
+	 margin: 0 auto;
+	 box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+	 margin-bottom: 5px;
+}
+ .output .country img {
+	 width: 100%;
+	 height: 100%;
+	 object-fit: cover;
+	 border-radius: 50%;
+}
+ #mapid {
+	 z-index: 1;
+	 height: 60vh;
+	 box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+	 margin: 5px;
+     
+}
+
+#error-container {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #f8d7da; /* Red background color (you can adjust this) */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #error-container i {
+    color: #721c24; /* Red icon color (you can adjust this) */
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #error-message {
+    font-size: 18px; /* Adjust the font size as needed */
+    color: #721c24; /* Red text color (you can adjust this) */
+    margin: 0;
+  }
+  
+  .clear-history-btn {
+    background-color: #721c24 !important;
+    position: absolute;
+    color: white !important;
+    width: 150px;
+    bottom: 20px;
+    margin-left: 25px;
+  }
+
+  /* Add these styles for dark mode */
+.dark-mode {
+    background-color: #222;
+    color: #fff;
+  }
+  
+  .dark-mode .history-list-item,.dark-mode .output .output-card {
+    border: 1px solid #555;
+    background-color: #444;
+    color: #fff;
+  }
+  
+  .dark-mode .delete-icon {
+    color: #ff6347; /* Red color for delete icon in dark mode */
+  }
+
+  .dark-mode .btn {
+    color: #444;
+    background-color: #fff;
+  }
+
+  .dark-mode .input {
+    background-color: #444;
+    color: #fff;
+  }
+  
+  /* Add a transition for a smooth mode transition */
+  body, .wrapper {
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+
+  .dark-mode-toggle-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: #444;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  }
+  
+  .dark-mode .dark-mode-toggle-icon {
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+
+  }
+  
+  /* Add a transition for a smooth mode transition */
+  .dark-mode-toggle-icon {
+    transition: color 0.3s;
+  }
+ @media (max-width: 450px) {
+	 .header {
+		 font-size: 22px;
+	}
+	 .search {
+		 width: 200px;
+         flex-direction: column;
+         align-items: center;   
+	}
+     .search .btn {
+        margin-top: 10px;
+    }
+	 .output {
+        width: 100%;
+        margin-top: 20px;
+        position: relative;
+        top: 135px;
+	}
+	 .output .output-card {
+		 grid-template-columns: repeat(1, 1fr);
+	}
+
+}
+ 
+/* Small screens */
+@media (max-width: 600px) {
+    .wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: calc(100% - 40px);
+        height: auto;
+        position: static;
+    }
+    .output {
+        width: 100%;
+        margin-top: 20px;
+        position: relative;
+        top: 135px;
+    }
+    .output .output-card {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Medium screens */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .sidebar {
+        width: 250px;
+    }
+    .output {
+        width: 90%;
+        
+    }
+
+}
+
+/* Large screens */
+@media (min-width: 1025px) {
+    .output {
+        width: 60%;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+    .heading {
+        height: 20vh;
+    }
+}
+

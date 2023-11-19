@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/9a00dfd817.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <title>IP Address Tracker</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div id="toggle-dark-mode" class="dark-mode-toggle-icon">
+            <i class="fas fa-moon"></i>
+          </div>        <div class="heading">
+          <h1 class="header">IP Address Tracker</h1>
+          <form class="search">
+            <input
+              id="input"
+              class="input"
+              type="text"
+              minlength="7"
+              maxlength="15"
+              size="15"
+              pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
+              placeholder="Search for any IP address or domain"
+            />
+            <button type="submit" class="btn" id="search-btn">TRACK IP</button>
+          </form>
+        </div>
+        <div class="output" id="output"></div>
+        <div id="map">
+          <div id="mapid"></div>
+        </div>
+        <div id="error-container" class="error-container">
+          <i class="fas fa-exclamation-circle"></i>
+          <p id="error-message" class="error-message"></p>
+        </div>
+      </div>
+      <div class="sidebar">
+        <h2>History</h2>
+        <ul class="history-list"></ul>
+        <button id="clear-history-btn" class="btn clear-history-btn">
+          Clear History
+        </button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
